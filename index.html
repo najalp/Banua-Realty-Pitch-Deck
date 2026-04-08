@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banua Realty — Pitch Deck</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { 600: '#059669', 700: '#047857', 50: '#ecfdf5', 100: '#d1fae5' },
+                        slate: { 900: '#0F172A', 800: '#1E293B', 700: '#334155', 600: '#475569', 500: '#64748B', 100: '#F8FAFC', 200: '#F1F5F9', 300: '#E2E8F0' },
+                        amber: { 500: '#F59E0B', 400: '#FBBF24', 600: '#D97706' }
+                    },
+                    fontFamily: { inter: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            background: #0F172A;
+        }
+
+        /* === SLIDE SYSTEM — FIXED === */
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            padding: 24px;
+            transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(0);
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: all;
+        }
+
+        .slide.exit-left {
+            opacity: 0;
+            transform: translateX(-80px);
+            pointer-events: none;
+        }
+
+        .slide.exit-right {
+            opacity: 0;
+            transform: translateX(80px);
+            pointer-events: none;
+        }
+
+        .slide.prep-right {
+            opacity: 0;
+            transform: translateX(80px);
+            pointer-events: none;
+        }
+
+        .slide.prep-left {
+            opacity: 0;
+            transform: translateX(-80px);
+            pointer-events: none;
+        }
+
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+
+        .stat-number {
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(5, 150, 105, 0.12);
+        }
+
+        .icon-box {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border: 1px solid rgba(5, 150, 105, 0.15);
+        }
+
+        .divider-line {
+            height: 3px;
+            width: 60px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #059669, #F59E0B);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #059669, #047857);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(5, 150, 105, 0.3);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 24px rgba(5, 150, 105, 0.45);
+            transform: translateY(-1px);
+        }
+
+        .slide-inner {
+            width: 100%;
+            max-width: 960px;
+            background: #F8FAFC;
+            border-radius: 20px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide-header-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #059669, #F59E0B, #059669);
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px 12px;
+            text-align: center;
+            border: 1px solid #E2E8F0;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            border-color: #059669;
+            box-shadow: 0 8px 24px rgba(5, 150, 105, 0.1);
+        }
+
+        .qr-box {
+            width: 140px;
+            height: 140px;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid #E2E8F0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-8px)
+            }
+        }
+
+        .float-anim {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide.active .anim-1 {
+            animation: fadeInUp 0.6s 0.1s ease both;
+        }
+
+        .slide.active .anim-2 {
+            animation: fadeInUp 0.6s 0.2s ease both;
+        }
+
+        .slide.active .anim-3 {
+            animation: fadeInUp 0.6s 0.3s ease both;
+        }
+
+        .slide.active .anim-4 {
+            animation: fadeInUp 0.6s 0.4s ease both;
+        }
+
+        .slide.active .anim-5 {
+            animation: fadeInUp 0.6s 0.5s ease both;
+        }
+
+        .slide.active .anim-6 {
+            animation: fadeInUp 0.6s 0.6s ease both;
+        }
+
+        .slide.active .anim-7 {
+            animation: fadeInUp 0.6s 0.7s ease both;
+        }
+
+        .web-preview {
+            background: #0F172A;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.3);
+        }
+
+        .web-topbar {
+            background: #1E293B;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            gap: 6px;
+        }
+
+        .web-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .finance-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .finance-row:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Progress Bar -->
+    <div class="fixed top-0 left-0 right-0 z-50 h-1 bg-slate-900/30">
+        <div id="progressBar" class="progress-bar h-full bg-gradient-to-r from-emerald-600 to-amber-500"
+            style="width: 10%"></div>
+    </div>
+
+    <!-- Slide Counter -->
+    <div class="fixed top-5 right-6 z-50 flex items-center gap-3">
+        <span id="slideCounter" class="text-white/60 text-sm font-medium tracking-wider font-inter">01 / 10</span>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button id="prevBtn" onclick="changeSlide(-1)"
+        class="fixed left-4 top-1/2 -translate-y-1/2 z-50 w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/50 hover:text-emerald-600 hover:bg-white/20 transition-all duration-300">
+        <span class="iconify" data-icon="lucide:chevron-left" data-width="20"></span>
+    </button>
+    <button id="nextBtn" onclick="changeSlide(1)"
+        class="fixed right-4 top-1/2 -translate-y-1/2 z-50 w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/50 hover:text-emerald-600 hover:bg-white/20 transition-all duration-300">
+        <span class="iconify" data-icon="lucide:chevron-right" data-width="20"></span>
+    </button>
+
+    <!-- Navigation Dots -->
+    <div
+        class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-white/5 backdrop-blur-md rounded-full px-4 py-2.5 border border-white/10">
+        <div class="nav-dot active w-2.5 h-2.5 rounded-full bg-emerald-600 cursor-pointer" onclick="goToSlide(0)"></div>
+        <div class="nav-dot w-2.5 h-2.5 rounded-full bg-white/30 cursor-pointer" onclick="goToSlide(1)"></div>
+        <div class="nav-dot w-2.5 h-2.5 rounded-full bg-white/30 cursor-pointer" onclick="goToSlide(2)"></div>
+        <div class="nav-dot w-2.5 h-2.5 rounded-full bg-white/30 cursor-pointer" onclick="goToSlide(3)"></div>
+        <div class="nav-dot w-2.5 h-2.5 rounded-full bg-white/30 cursor-pointer" onclick="goToSlide(4)"></div>
+        <div class="nav-dot w-2.5 h-2.5 rounded-full bg-white/30 cursor-pointer" onclick="goToSlide(5)"></div>
+        <div class="nav-dot w-2.5 h-2.5 rounded-full bg-white/30 cursor-pointer" onclick="goToSlide(6)"></div>
+        <div class="nav-dot w-2.5 h-2.5 rounded-full bg-white/30 cursor-pointer" onclick="goToSlide(7)"></div>
+        <div class="nav-dot w-2.5 h-2.5 rounded-full bg-white/30 cursor-pointer" onclick="goToSlide(8)"></div>
+        <div class="nav-dot w-2.5 h-2.5 rounded-full bg-white/30 cursor-pointer" onclick="goToSlide(9)"></div>
+    </div>
+
+    <!-- ==================== SLIDE 1: TITLE ==================== -->
+    <div class="slide active" data-slide="0">
+        <div class="slide-inner">
+            <div class="slide-header-bar"></div>
+            <div class="relative flex flex-col items-center justify-center px-8 md:px-16 py-16 md:py-20 overflow-hidden"
+                style="min-height: 520px;">
+                <div class="absolute top-8 right-8 w-48 h-48 rounded-full bg-emerald-50 opacity-60"></div>
+                <div class="absolute bottom-8 left-8 w-32 h-32 rounded-full bg-amber-50 opacity-50"></div>
+                <div
+                    class="anim-1 relative z-10 w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-700 flex items-center justify-center shadow-lg mb-8 float-anim">
+                    <span class="iconify text-white" data-icon="lucide:building-2" data-width="36"></span>
+                </div>
+                <div class="anim-2 relative z-10 text-center">
+                    <p class="text-emerald-600 font-semibold text-sm tracking-[0.2em] uppercase mb-3">Pitch Deck</p>
+                    <h1 class="text-slate-900 text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-4">Brand
+                        Banua<br><span
+                            class="bg-gradient-to-r from-emerald-600 to-emerald-700 bg-clip-text text-transparent">Realty</span>
+                    </h1>
+                    <div class="divider-line mx-auto mb-6"></div>
+                    <p class="text-slate-500 text-lg md:text-xl font-light max-w-lg mx-auto leading-relaxed">Jendela
+                        Properti Kalimantan Selatan:<br><span class="text-slate-900 font-medium">Cepat, Mudah,
+                            Tepat.</span></p>
+                </div>
+                <div class="anim-3 relative z-10 mt-10 flex items-center gap-2 text-slate-400 text-sm">
+                    <span class="iconify" data-icon="lucide:arrow-right" data-width="16"></span>
+                    <span>Tekan panah atau geser untuk melanjutkan</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 2: PERMASALAHAN ==================== -->
+    <div class="slide" data-slide="1">
+        <div class="slide-inner">
+            <div class="slide-header-bar"></div>
+            <div class="px-8 md:px-14 py-14 md:py-16" style="min-height: 520px;">
+                <div class="flex items-center gap-3 mb-2 anim-1">
+                    <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center">
+                        <span class="iconify text-emerald-600" data-icon="lucide:alert-triangle" data-width="20"></span>
+                    </div>
+                    <p class="text-emerald-600 font-semibold text-xs tracking-[0.2em] uppercase">Slide 02</p>
+                </div>
+                <h2 class="text-slate-900 text-3xl md:text-4xl font-bold tracking-tight mb-3 anim-2">Permasalahan</h2>
+                <div class="divider-line mb-10 anim-2"></div>
+                <div class="space-y-5">
+                    <div
+                        class="anim-3 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex items-start gap-5">
+                        <div class="icon-box w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="iconify text-emerald-600" data-icon="lucide:eye-off" data-width="22"></span>
+                        </div>
+                        <div>
+                            <h3 class="text-slate-900 font-semibold text-lg mb-1">Kesenjangan Kualitas Visual</h3>
+                            <p class="text-slate-500 text-[15px] leading-relaxed">Banyak properti di Kalimantan Selatan
+                                belum memiliki konten pemasaran digital profesional.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="anim-4 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex items-start gap-5">
+                        <div class="icon-box w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="iconify text-emerald-600" data-icon="lucide:image-off" data-width="22"></span>
+                        </div>
+                        <div>
+                            <h3 class="text-slate-900 font-semibold text-lg mb-1">Konten Kurang Menarik</h3>
+                            <p class="text-slate-500 text-[15px] leading-relaxed">Properti lokal sering kali sulit
+                                dilirik karena foto dan video yang tidak standar atau menarik.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="anim-5 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex items-start gap-5">
+                        <div class="icon-box w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="iconify text-emerald-600" data-icon="lucide:map-pin-off"
+                                data-width="22"></span>
+                        </div>
+                        <div>
+                            <h3 class="text-slate-900 font-semibold text-lg mb-1">Kebutuhan Marketing Lokal</h3>
+                            <p class="text-slate-500 text-[15px] leading-relaxed">Belum ada tim konten properti yang
+                                fokus pada wilayah lokal dengan harga kompetitif.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 3: SOLUSI ==================== -->
+    <div class="slide" data-slide="2">
+        <div class="slide-inner">
+            <div class="slide-header-bar"></div>
+            <div class="px-8 md:px-14 py-14 md:py-16" style="min-height: 520px;">
+                <div class="flex items-center gap-3 mb-2 anim-1">
+                    <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center">
+                        <span class="iconify text-emerald-600" data-icon="lucide:lightbulb" data-width="20"></span>
+                    </div>
+                    <p class="text-emerald-600 font-semibold text-xs tracking-[0.2em] uppercase">Slide 03</p>
+                </div>
+                <h2 class="text-slate-900 text-3xl md:text-4xl font-bold tracking-tight mb-3 anim-2">Solusi</h2>
+                <div class="divider-line mb-10 anim-2"></div>
+                <div class="grid md:grid-cols-3 gap-5">
+                    <div class="anim-3 card-hover bg-white rounded-2xl p-7 border border-slate-200 text-center">
+                        <div class="icon-box w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                            <span class="iconify text-emerald-600" data-icon="lucide:camera" data-width="26"></span>
+                        </div>
+                        <h3 class="text-slate-900 font-semibold text-lg mb-2">Produksi Konten Profesional</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Foto & video properti berkualitas tinggi —
+                            terang, stabil, rapi.</p>
+                    </div>
+                    <div class="anim-4 card-hover bg-white rounded-2xl p-7 border border-slate-200 text-center">
+                        <div class="icon-box w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                            <span class="iconify text-emerald-600" data-icon="lucide:share-2" data-width="26"></span>
+                        </div>
+                        <h3 class="text-slate-900 font-semibold text-lg mb-2">Digital Marketing Terpadu</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Distribusi konten via Instagram, WhatsApp &
+                            Facebook secara strategis.</p>
+                    </div>
+                    <div class="anim-5 card-hover bg-white rounded-2xl p-7 border border-slate-200 text-center">
+                        <div class="icon-box w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                            <span class="iconify text-emerald-600" data-icon="lucide:zap" data-width="26"></span>
+                        </div>
+                        <h3 class="text-slate-900 font-semibold text-lg mb-2">Layanan Cepat & Efisien</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Shooting maks <span
+                                class="stat-number font-bold">2 jam</span>, editing maks <span
+                                class="stat-number font-bold">2 hari</span>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 4: BESARAN PASAR ==================== -->
+    <div class="slide" data-slide="3">
+        <div class="slide-inner">
+            <div class="slide-header-bar"></div>
+            <div class="px-8 md:px-14 py-14 md:py-16" style="min-height: 520px;">
+                <div class="flex items-center gap-3 mb-2 anim-1">
+                    <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center">
+                        <span class="iconify text-emerald-600" data-icon="lucide:bar-chart-3" data-width="20"></span>
+                    </div>
+                    <p class="text-emerald-600 font-semibold text-xs tracking-[0.2em] uppercase">Slide 04</p>
+                </div>
+                <h2 class="text-slate-900 text-3xl md:text-4xl font-bold tracking-tight mb-3 anim-2">Besaran Pasar</h2>
+                <div class="divider-line mb-10 anim-2"></div>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="anim-3 card-hover bg-white rounded-2xl p-8 border border-slate-200 text-center">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mx-auto mb-5">
+                            <span class="iconify text-emerald-600" data-icon="lucide:map" data-width="28"></span>
+                        </div>
+                        <p class="text-slate-400 text-xs font-semibold tracking-widest uppercase mb-3">Wilayah Fokus</p>
+                        <p class="text-slate-900 font-bold text-lg leading-snug">Banjarmasin<br>Banjarbaru<br>Martapura
+                        </p>
+                    </div>
+                    <div class="anim-4 card-hover bg-white rounded-2xl p-8 border border-slate-200 text-center">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center mx-auto mb-5">
+                            <span class="iconify text-amber-500" data-icon="lucide:database" data-width="28"></span>
+                        </div>
+                        <p class="text-slate-400 text-xs font-semibold tracking-widest uppercase mb-3">Target Portofolio
+                        </p>
+                        <p class="stat-number text-5xl font-extrabold">5–15</p>
+                        <p class="text-slate-500 text-sm mt-2">properti dalam basis data awal</p>
+                    </div>
+                    <div class="anim-5 card-hover bg-white rounded-2xl p-8 border border-slate-200 text-center">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mx-auto mb-5">
+                            <span class="iconify text-emerald-600" data-icon="lucide:clapperboard"
+                                data-width="28"></span>
+                        </div>
+                        <p class="text-slate-400 text-xs font-semibold tracking-widest uppercase mb-3">Potensi Produksi
+                        </p>
+                        <p class="stat-number text-5xl font-extrabold">10+</p>
+                        <p class="text-slate-500 text-sm mt-2">konten per bulan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 5: WEB PREVIEW ==================== -->
+    <div class="slide" data-slide="4">
+        <div class="slide-inner">
+            <div class="slide-header-bar"></div>
+            <div class="px-8 md:px-14 py-14 md:py-16" style="min-height: 520px;">
+                <div class="flex items-center gap-3 mb-2 anim-1">
+                    <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center">
+                        <span class="iconify text-emerald-600" data-icon="lucide:globe" data-width="20"></span>
+                    </div>
+                    <p class="text-emerald-600 font-semibold text-xs tracking-[0.2em] uppercase">Slide 05</p>
+                </div>
+                <h2 class="text-slate-900 text-3xl md:text-4xl font-bold tracking-tight mb-3 anim-2">Preview Website
+                </h2>
+                <div class="divider-line mb-8 anim-2"></div>
+                <div class="anim-3 flex flex-col md:flex-row items-center gap-8">
+                    <div class="web-preview flex-1 w-full">
+                        <div class="web-topbar">
+                            <div class="web-dot bg-red-400"></div>
+                            <div class="web-dot bg-amber-400"></div>
+                            <div class="web-dot bg-emerald-400"></div>
+                            <div
+                                class="ml-4 bg-slate-700 rounded-md px-3 py-1 text-xs text-slate-400 flex-1 max-w-[200px]">
+                                banuarealty.com</div>
+                        </div>
+                        <div class="relative" style="aspect-ratio: 16/10;">
+                            <img src="https://picsum.photos/seed/banua-property-web/800/500.jpg" alt="Web Preview"
+                                class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-slate-900/20">
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <p class="text-emerald-400 text-xs font-semibold tracking-widest uppercase mb-1">Banua
+                                    Realty</p>
+                                <p class="text-white text-xl font-bold">Temukan Properti Impian Anda</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="anim-4 flex flex-col items-center gap-4">
+                        <div class="qr-box">
+                            <svg width="100" height="100" viewBox="0 0 100 100">
+                                <rect x="5" y="5" width="25" height="25" rx="3" fill="#0F172A" />
+                                <rect x="8" y="8" width="19" height="19" rx="2" fill="white" />
+                                <rect x="11" y="11" width="13" height="13" rx="1" fill="#059669" />
+                                <rect x="70" y="5" width="25" height="25" rx="3" fill="#0F172A" />
+                                <rect x="73" y="8" width="19" height="19" rx="2" fill="white" />
+                                <rect x="76" y="11" width="13" height="13" rx="1" fill="#059669" />
+                                <rect x="5" y="70" width="25" height="25" rx="3" fill="#0F172A" />
+                                <rect x="8" y="73" width="19" height="19" rx="2" fill="white" />
+                                <rect x="11" y="76" width="13" height="13" rx="1" fill="#059669" />
+                                <rect x="35" y="5" width="8" height="8" rx="1" fill="#0F172A" />
+                                <rect x="48" y="5" width="8" height="8" rx="1" fill="#0F172A" />
+                                <rect x="35" y="18" width="8" height="8" rx="1" fill="#0F172A" />
+                                <rect x="35" y="35" width="8" height="8" rx="1" fill="#059669" />
+                                <rect x="48" y="35" width="8" height="8" rx="1" fill="#0F172A" />
+                                <rect x="61" y="35" width="8" height="8" rx="1" fill="#0F172A" />
+                                <rect x="74" y="35" width="8" height="8" rx="1" fill="#0F172A" />
+                                <rect x="87" y="35" width="8" height="8" rx="1" fill="#059669" />
+                                <rect x="35" y="48" width="8" height="8" rx="1" fill="#0F172A" />
+                                <rect x="61" y="48" width="8" height="8" rx="1" fill="#059669" />
+                                <rect x="87" y="48" width="8" height="8" rx="1" fill="#0F172A" />
+                                <rect x="35" y="61" width="8" height="8" rx="1" fill="#059669" />
+                                <rect x="48" y="61" width="8" height="8" rx="1" fill="#0F172A" />
+                                <rect x="74" y="61" width="8" height="8" rx="1" fill="#0F172A" />
+                                <rect x="87" y="61" width="8" height="8" rx="1" fill="#0F172A" />
+                                <rect x="48" y="74" width="8" height="8" rx="1" fill="#0F172A" />
+                                <rect x="61" y="74" width="8" height="8" rx="1" fill="#059669" />
+                                <rect x="74" y="74" width="8" height="8" rx="1" fill="#0F172A" />
+                                <rect x="87" y="74" width="8" height="8" rx="1" fill="#0F172A" />
+                                <rect x="48" y="87" width="8" height="8" rx="1" fill="#059669" />
+                                <rect x="61" y="87" width="8" height="8" rx="1" fill="#0F172A" />
+                                <rect x="87" y="87" width="8" height="8" rx="1" fill="#059669" />
+                            </svg>
+                        </div>
+                        <p class="text-slate-900 font-semibold text-sm">Scan untuk Kunjungi</p>
+                        <p class="text-slate-400 text-xs">banuarealty.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 6: MODEL BISNIS ==================== -->
+    <div class="slide" data-slide="5">
+        <div class="slide-inner">
+            <div class="slide-header-bar"></div>
+            <div class="px-8 md:px-14 py-14 md:py-16" style="min-height: 520px;">
+                <div class="flex items-center gap-3 mb-2 anim-1">
+                    <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center">
+                        <span class="iconify text-emerald-600" data-icon="lucide:briefcase" data-width="20"></span>
+                    </div>
+                    <p class="text-emerald-600 font-semibold text-xs tracking-[0.2em] uppercase">Slide 06</p>
+                </div>
+                <h2 class="text-slate-900 text-3xl md:text-4xl font-bold tracking-tight mb-3 anim-2">Model Bisnis</h2>
+                <div class="divider-line mb-8 anim-2"></div>
+                <div class="anim-3 bg-white rounded-2xl p-6 border border-slate-200 mb-6 flex items-start gap-4">
+                    <div class="icon-box w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span class="iconify text-emerald-600" data-icon="lucide:piggy-bank" data-width="22"></span>
+                    </div>
+                    <p class="text-slate-600 text-[15px] leading-relaxed">Banua Realty menyisihkan <span
+                            class="text-emerald-600 font-bold">20%</span> dari laba kotor setiap proyek untuk kas dan
+                        pengembangan operasional perusahaan.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-5">
+                    <div
+                        class="anim-4 card-hover bg-gradient-to-br from-emerald-50 to-white rounded-2xl p-7 border border-emerald-100 text-center">
+                        <p class="text-slate-400 text-xs font-semibold tracking-widest uppercase mb-3">Biaya per Proyek
+                        </p>
+                        <p class="stat-number text-4xl font-extrabold">Rp150K</p>
+                        <p class="text-slate-500 text-sm mt-2">Estimasi rata-rata layanan</p>
+                    </div>
+                    <div
+                        class="anim-5 card-hover bg-gradient-to-br from-amber-50 to-white rounded-2xl p-7 border border-amber-100 text-center">
+                        <p class="text-slate-400 text-xs font-semibold tracking-widest uppercase mb-3">Target Profit</p>
+                        <p class="stat-number text-4xl font-extrabold">Rp1,5Jt</p>
+                        <p class="text-slate-500 text-sm mt-2">Dalam 2 bulan pertama</p>
+                    </div>
+                    <div
+                        class="anim-6 card-hover bg-gradient-to-br from-slate-50 to-white rounded-2xl p-7 border border-slate-200 text-center">
+                        <p class="text-slate-400 text-xs font-semibold tracking-widest uppercase mb-3">Alokasi Laba</p>
+                        <p class="stat-number text-4xl font-extrabold">20%</p>
+                        <p class="text-slate-500 text-sm mt-2">Untuk kas & operasional</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 7: RENCANA PEMASARAN ==================== -->
+    <div class="slide" data-slide="6">
+        <div class="slide-inner">
+            <div class="slide-header-bar"></div>
+            <div class="px-8 md:px-14 py-14 md:py-16" style="min-height: 520px;">
+                <div class="flex items-center gap-3 mb-2 anim-1">
+                    <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center">
+                        <span class="iconify text-emerald-600" data-icon="lucide:megaphone" data-width="20"></span>
+                    </div>
+                    <p class="text-emerald-600 font-semibold text-xs tracking-[0.2em] uppercase">Slide 07</p>
+                </div>
+                <h2 class="text-slate-900 text-3xl md:text-4xl font-bold tracking-tight mb-3 anim-2">Rencana Pemasaran
+                </h2>
+                <div class="divider-line mb-10 anim-2"></div>
+                <div class="anim-3 bg-white rounded-2xl p-8 border border-slate-200">
+                    <div class="flex items-start gap-5 mb-8">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-700 flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <span class="iconify text-white" data-icon="lucide:share-2" data-width="24"></span>
+                        </div>
+                        <div>
+                            <h3 class="text-slate-900 font-bold text-xl mb-2">Social Media Management</h3>
+                            <p class="text-slate-500 text-[15px] leading-relaxed">Mengelola akun Instagram, Facebook &
+                                Meta Ads dengan konten promosi yang disusun rutin dan terukur.</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div
+                            class="anim-4 bg-gradient-to-br from-pink-50 to-white rounded-xl p-5 border border-pink-100 text-center card-hover">
+                            <span class="iconify text-pink-500 mb-3 mx-auto block" data-icon="lucide:instagram"
+                                data-width="28"></span>
+                            <p class="text-slate-900 font-semibold text-sm">Instagram</p>
+                            <p class="text-slate-400 text-xs mt-1">Reels & Feed</p>
+                        </div>
+                        <div
+                            class="anim-5 bg-gradient-to-br from-blue-50 to-white rounded-xl p-5 border border-blue-100 text-center card-hover">
+                            <span class="iconify text-blue-500 mb-3 mx-auto block" data-icon="lucide:facebook"
+                                data-width="28"></span>
+                            <p class="text-slate-900 font-semibold text-sm">Facebook</p>
+                            <p class="text-slate-400 text-xs mt-1">Page & Groups</p>
+                        </div>
+                        <div
+                            class="anim-6 bg-gradient-to-br from-emerald-50 to-white rounded-xl p-5 border border-emerald-100 text-center card-hover">
+                            <span class="iconify text-emerald-600 mb-3 mx-auto block" data-icon="lucide:target"
+                                data-width="28"></span>
+                            <p class="text-slate-900 font-semibold text-sm">Meta Ads</p>
+                            <p class="text-slate-400 text-xs mt-1">Targeted Reach</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 8: ANALISIS KOMPETITOR ==================== -->
+    <div class="slide" data-slide="7">
+        <div class="slide-inner">
+            <div class="slide-header-bar"></div>
+            <div class="px-8 md:px-14 py-14 md:py-16" style="min-height: 520px;">
+                <div class="flex items-center gap-3 mb-2 anim-1">
+                    <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center">
+                        <span class="iconify text-emerald-600" data-icon="lucide:trophy" data-width="20"></span>
+                    </div>
+                    <p class="text-emerald-600 font-semibold text-xs tracking-[0.2em] uppercase">Slide 08</p>
+                </div>
+                <h2 class="text-slate-900 text-3xl md:text-4xl font-bold tracking-tight mb-3 anim-2">Analisis Kompetitor
+                </h2>
+                <div class="divider-line mb-8 anim-2"></div>
+                <p class="text-slate-500 text-[15px] mb-6 anim-3">Keunggulan kompetitif Banua Realty dibandingkan pemain
+                    lain di pasar lokal:</p>
+                <div class="space-y-5">
+                    <div
+                        class="anim-4 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex items-start gap-5">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center flex-shrink-0">
+                            <span class="iconify text-amber-500" data-icon="lucide:timer" data-width="22"></span>
+                        </div>
+                        <div>
+                            <h3 class="text-slate-900 font-semibold text-lg mb-1">Keunggulan Kecepatan</h3>
+                            <p class="text-slate-500 text-[15px] leading-relaxed">Editing selesai dalam maksimal <span
+                                    class="text-amber-500 font-bold">2 hari kerja</span> — jauh lebih cepat dari
+                                kompetitor.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="anim-5 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex items-start gap-5">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center flex-shrink-0">
+                            <span class="iconify text-emerald-600" data-icon="lucide:image" data-width="22"></span>
+                        </div>
+                        <div>
+                            <h3 class="text-slate-900 font-semibold text-lg mb-1">Kualitas Tanpa Watermark</h3>
+                            <p class="text-slate-500 text-[15px] leading-relaxed">Konten profesional tanpa tanda air
+                                aplikasi gratis yang menurunkan nilai properti.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="anim-6 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex items-start gap-5">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center flex-shrink-0">
+                            <span class="iconify text-slate-700" data-icon="lucide:palette" data-width="22"></span>
+                        </div>
+                        <div>
+                            <h3 class="text-slate-900 font-semibold text-lg mb-1">Branding Konsisten</h3>
+                            <p class="text-slate-500 text-[15px] leading-relaxed">Penggunaan template branding seragam
+                                untuk setiap konten klien agar terlihat lebih kredibel.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 9: TIM ==================== -->
+    <div class="slide" data-slide="8">
+        <div class="slide-inner">
+            <div class="slide-header-bar"></div>
+            <div class="px-8 md:px-12 py-14 md:py-16" style="min-height: 520px;">
+                <div class="flex items-center gap-3 mb-2 anim-1">
+                    <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center">
+                        <span class="iconify text-emerald-600" data-icon="lucide:users" data-width="20"></span>
+                    </div>
+                    <p class="text-emerald-600 font-semibold text-xs tracking-[0.2em] uppercase">Slide 09</p>
+                </div>
+                <h2 class="text-slate-900 text-3xl md:text-4xl font-bold tracking-tight mb-3 anim-2">Tim Kami</h2>
+                <div class="divider-line mb-8 anim-2"></div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="anim-3 team-card">
+                        <div class="w-16 h-16 rounded-full mx-auto mb-3 overflow-hidden border-2 border-emerald-100">
+                            <img src="https://picsum.photos/seed/alpiannor/120/120.jpg" alt="PM"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-slate-900 font-semibold text-sm leading-tight">M. Alpiannor Najimi</p>
+                        <span
+                            class="inline-block mt-1.5 text-[10px] font-bold tracking-widest uppercase text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">PM</span>
+                    </div>
+                    <div class="anim-4 team-card">
+                        <div class="w-16 h-16 rounded-full mx-auto mb-3 overflow-hidden border-2 border-amber-100">
+                            <img src="https://picsum.photos/seed/azzahra-putri/120/120.jpg" alt="Finance"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-slate-900 font-semibold text-sm leading-tight">Azzahra Putri Arrahim</p>
+                        <span
+                            class="inline-block mt-1.5 text-[10px] font-bold tracking-widest uppercase text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full">Finance</span>
+                    </div>
+                    <div class="anim-5 team-card">
+                        <div class="w-16 h-16 rounded-full mx-auto mb-3 overflow-hidden border-2 border-emerald-100">
+                            <img src="https://picsum.photos/seed/fariz-casno/120/120.jpg" alt="Admin"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-slate-900 font-semibold text-sm leading-tight">Muhammad Fariz Casno</p>
+                        <span
+                            class="inline-block mt-1.5 text-[10px] font-bold tracking-widest uppercase text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Admin</span>
+                    </div>
+                    <div class="anim-5 team-card">
+                        <div class="w-16 h-16 rounded-full mx-auto mb-3 overflow-hidden border-2 border-amber-100">
+                            <img src="https://picsum.photos/seed/ghina-aulia/120/120.jpg" alt="Marketing"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-slate-900 font-semibold text-sm leading-tight">Ghina Putri Aulia</p>
+                        <span
+                            class="inline-block mt-1.5 text-[10px] font-bold tracking-widest uppercase text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full">Marketing</span>
+                    </div>
+                    <div class="anim-6 team-card">
+                        <div class="w-16 h-16 rounded-full mx-auto mb-3 overflow-hidden border-2 border-emerald-100">
+                            <img src="https://picsum.photos/seed/rafi-fariz/120/120.jpg" alt="Sales"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-slate-900 font-semibold text-sm leading-tight">Muhammad Rafi Al Fariz</p>
+                        <span
+                            class="inline-block mt-1.5 text-[10px] font-bold tracking-widest uppercase text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Sales</span>
+                    </div>
+                    <div class="anim-7 team-card">
+                        <div class="w-16 h-16 rounded-full mx-auto mb-3 overflow-hidden border-2 border-amber-100">
+                            <img src="https://picsum.photos/seed/parhan-nawarii/120/120.jpg" alt="Produksi"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-slate-900 font-semibold text-sm leading-tight">M. Parhan Nawarii</p>
+                        <span
+                            class="inline-block mt-1.5 text-[10px] font-bold tracking-widest uppercase text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full">Produksi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 10: MODEL KEUANGAN ==================== -->
+    <div class="slide" data-slide="9">
+        <div class="slide-inner">
+            <div class="slide-header-bar"></div>
+            <div class="px-8 md:px-14 py-14 md:py-16" style="min-height: 520px;">
+                <div class="flex items-center gap-3 mb-2 anim-1">
+                    <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center">
+                        <span class="iconify text-emerald-600" data-icon="lucide:wallet" data-width="20"></span>
+                    </div>
+                    <p class="text-emerald-600 font-semibold text-xs tracking-[0.2em] uppercase">Slide 10</p>
+                </div>
+                <h2 class="text-slate-900 text-3xl md:text-4xl font-bold tracking-tight mb-3 anim-2">Model Keuangan</h2>
+                <div class="divider-line mb-8 anim-2"></div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="anim-3 space-y-5">
+                        <div class="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-2xl p-6 text-white">
+                            <p class="text-emerald-100 text-xs font-semibold tracking-widest uppercase mb-2">Modal Awal
+                            </p>
+                            <p class="text-4xl font-extrabold">Rp500.000</p>
+                            <p class="text-emerald-200 text-sm mt-1">Strategi Lean Startup</p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200">
+                            <p class="text-slate-900 font-semibold text-sm mb-4">Alokasi Dana</p>
+                            <div class="finance-row">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center">
+                                        <span class="iconify text-amber-500" data-icon="lucide:megaphone"
+                                            data-width="14"></span>
+                                    </div>
+                                    <span class="text-slate-600 text-sm">Iklan Awal</span>
+                                </div>
+                                <span class="stat-number font-bold text-sm">Rp100.000</span>
+                            </div>
+                            <div class="finance-row">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center">
+                                        <span class="iconify text-emerald-600" data-icon="lucide:car"
+                                            data-width="14"></span>
+                                    </div>
+                                    <span class="text-slate-600 text-sm">Transport & Ops</span>
+                                </div>
+                                <span class="stat-number font-bold text-sm">Rp50.000</span>
+                            </div>
+                            <div class="finance-row">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center">
+                                        <span class="iconify text-slate-700" data-icon="lucide:shield"
+                                            data-width="14"></span>
+                                    </div>
+                                    <span class="text-slate-600 text-sm">Branding & Cadangan</span>
+                                </div>
+                                <span class="stat-number font-bold text-sm">Rp100.000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="anim-4 flex flex-col gap-5">
+                        <div
+                            class="bg-white rounded-2xl p-6 border border-slate-200 flex-1 flex flex-col items-center justify-center text-center">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center mb-5">
+                                <span class="iconify text-amber-500" data-icon="lucide:target" data-width="30"></span>
+                            </div>
+                            <p class="text-slate-400 text-xs font-semibold tracking-widest uppercase mb-2">Target
+                                Capaian</p>
+                            <p class="stat-number text-5xl font-extrabold mb-2">Rp1,5 Jt</p>
+                            <p class="text-slate-500 text-sm">Keuntungan dalam waktu 2 bulan</p>
+                            <div class="mt-5 w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-emerald-600 to-amber-500 rounded-full"
+                                    style="width: 85%"></div>
+                            </div>
+                            <p class="text-slate-400 text-xs mt-2">ROI: 300%</p>
+                        </div>
+                        <div class="anim-5 btn-primary rounded-2xl py-4 px-6 text-center cursor-pointer"
+                            onclick="goToSlide(0)">
+                            <p class="text-white font-semibold text-sm">Terima kasih — Kembali ke Awal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ==================== JAVASCRIPT — FIXED ==================== -->
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 10;
+        let isAnimating = false;
+
+        function updateUI() {
+            document.getElementById('progressBar').style.width = ((currentSlide + 1) / totalSlides * 100) + '%';
+            const num = String(currentSlide + 1).padStart(2, '0');
+            document.getElementById('slideCounter').textContent = num + ' / ' + String(totalSlides).padStart(2, '0');
+            document.querySelectorAll('.nav-dot').forEach(function (dot, i) {
+                if (i === currentSlide) {
+                    dot.style.background = '#059669';
+                    dot.style.width = '28px';
+                    dot.style.borderRadius = '10px';
+                } else {
+                    dot.style.background = 'rgba(255,255,255,0.3)';
+                    dot.style.width = '10px';
+                    dot.style.borderRadius = '50%';
+                }
+            });
+            document.getElementById('prevBtn').style.opacity = currentSlide === 0 ? '0.3' : '1';
+            document.getElementById('prevBtn').style.pointerEvents = currentSlide === 0 ? 'none' : 'all';
+            document.getElementById('nextBtn').style.opacity = currentSlide === totalSlides - 1 ? '0.3' : '1';
+            document.getElementById('nextBtn').style.pointerEvents = currentSlide === totalSlides - 1 ? 'none' : 'all';
+        }
+
+        function goToSlide(index) {
+            if (isAnimating || index === currentSlide || index < 0 || index >= totalSlides) return;
+            isAnimating = true;
+
+            var slides = document.querySelectorAll('.slide');
+            var oldIndex = currentSlide;
+            var goingForward = index > oldIndex;
+
+            // Step 1: Remove 'active' from old slide, give it exit class
+            slides[oldIndex].classList.remove('active');
+            slides[oldIndex].classList.add(goingForward ? 'exit-left' : 'exit-right');
+
+            // Step 2: Clean the new slide of any old classes, put it at prep position
+            slides[index].classList.remove('active', 'exit-left', 'exit-right', 'prep-left', 'prep-right');
+            slides[index].classList.add(goingForward ? 'prep-right' : 'prep-left');
+
+            // Step 3: Force browser to paint the prep position
+            void slides[index].offsetHeight;
+
+            // Step 4: Move new slide from prep → active
+            slides[index].classList.remove('prep-right', 'prep-left');
+            slides[index].classList.add('active');
+
+            currentSlide = index;
+            updateUI();
+
+            // Step 5: Clean up old slide after transition finishes
+            setTimeout(function () {
+                slides[oldIndex].classList.remove('exit-left', 'exit-right');
+                isAnimating = false;
+            }, 700);
+        }
+
+        function changeSlide(dir) {
+            goToSlide(currentSlide + dir);
+        }
+
+        // Keyboard
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault(); changeSlide(1);
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                e.preventDefault(); changeSlide(-1);
+            }
+        });
+
+        // Touch swipe
+        var touchStartX = 0;
+        var touchStartY = 0;
+        document.addEventListener('touchstart', function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        });
+        document.addEventListener('touchend', function (e) {
+            var diffX = touchStartX - e.changedTouches[0].screenX;
+            var diffY = touchStartY - e.changedTouches[0].screenY;
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                changeSlide(diffX > 0 ? 1 : -1);
+            }
+        });
+
+        // Init
+        updateUI();
+    </script>
+
+</body>
+
+</html>
