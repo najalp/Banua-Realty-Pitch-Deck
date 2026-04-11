@@ -267,8 +267,13 @@
             style="width: 10%"></div>
     </div>
 
-    <!-- Slide Counter -->
+    <!-- Slide Counter & Voice Button -->
     <div class="fixed top-5 right-6 z-50 flex items-center gap-3">
+        <button id="voiceToggleBtn" onclick="toggleVoice()"
+            class="flex items-center gap-2 bg-slate-800/60 hover:bg-emerald-600 text-white px-3 py-1.5 rounded-full text-xs font-medium transition-all backdrop-blur-md border border-white/10 hidden">
+            <span class="iconify" id="voiceIcon" data-icon="lucide:mic-off" data-width="14"></span>
+            <span id="voiceText">Suara: Mati</span>
+        </button>
         <span id="slideCounter" class="text-white/60 text-sm font-medium tracking-wider font-inter">01 / 10</span>
     </div>
 
@@ -982,22 +987,60 @@
         updateUI();
 
         // Annyang Voice Commands (Next/Prev Slide)
+        let isVoiceActive = false;
+
+        function updateVoiceUI() {
+            var btn = document.getElementById('voiceToggleBtn');
+            var icon = document.getElementById('voiceIcon');
+            var text = document.getElementById('voiceText');
+            if (isVoiceActive) {
+                btn.classList.add('bg-emerald-600');
+                btn.classList.remove('bg-slate-800/60');
+                icon.setAttribute('data-icon', 'lucide:mic');
+                text.textContent = 'Suara: Aktif';
+            } else {
+                btn.classList.add('bg-slate-800/60');
+                btn.classList.remove('bg-emerald-600');
+                icon.setAttribute('data-icon', 'lucide:mic-off');
+                text.textContent = 'Suara: Mati';
+            }
+        }
+
+        function toggleVoice() {
+            if (!annyang) return;
+
+            if (isVoiceActive) {
+                annyang.abort();
+                isVoiceActive = false;
+                updateVoiceUI();
+            } else {
+                // Request mic and start listening
+                annyang.start({ autoRestart: true, continuous: false });
+                isVoiceActive = true;
+                updateVoiceUI();
+                alert("🎤 Fitur suara dari Annyang aktif. Silakan bilang 'Lanjut' / 'Selanjutnya' atau 'Kembali' / 'Sebelumnya'.");
+            }
+        }
+
         if (typeof annyang !== 'undefined' && annyang) {
+            // Show the voice button if annyang is successfully loaded
+            document.getElementById('voiceToggleBtn').classList.remove('hidden');
+
             var commands = {
-                'next': function() { changeSlide(1); },
-                'next slide': function() { changeSlide(1); },
-                'lanjut': function() { changeSlide(1); },
-                'selanjutnya': function() { changeSlide(1); },
-                'berikutnya': function() { changeSlide(1); },
-                'previous': function() { changeSlide(-1); },
-                'previous slide': function() { changeSlide(-1); },
-                'kembali': function() { changeSlide(-1); },
-                'sebelumnya': function() { changeSlide(-1); },
-                'mundur': function() { changeSlide(-1); }
+                'next': function() { changeSlide(1); updateUI(); },
+                'next slide': function() { changeSlide(1); updateUI(); },
+                'lanjut': function() { changeSlide(1); updateUI(); },
+                'selanjutnya': function() { changeSlide(1); updateUI(); },
+                'berikutnya': function() { changeSlide(1); updateUI(); },
+                'previous': function() { changeSlide(-1); updateUI(); },
+                'previous slide': function() { changeSlide(-1); updateUI(); },
+                'kembali': function() { changeSlide(-1); updateUI(); },
+                'sebelumnya': function() { changeSlide(-1); updateUI(); },
+                'mundur': function() { changeSlide(-1); updateUI(); }
             };
             annyang.addCommands(commands);
             annyang.setLanguage('id-ID'); // Mendukung bahasa Indonesia
-            annyang.start({ autoRestart: true, continuous: false });
+            // Do NOT auto-start to prevent browser blocking. Wait for button click.
         }
     </script>
 
