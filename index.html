@@ -890,6 +890,7 @@
 
 
     <!-- ==================== JAVASCRIPT — FIXED ==================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
     <script>
         let currentSlide = 0;
         const totalSlides = 10;
@@ -979,6 +980,25 @@
 
         // Init
         updateUI();
+
+        // Annyang Voice Commands (Next/Prev Slide)
+        if (typeof annyang !== 'undefined' && annyang) {
+            var commands = {
+                'next': function() { changeSlide(1); },
+                'next slide': function() { changeSlide(1); },
+                'lanjut': function() { changeSlide(1); },
+                'selanjutnya': function() { changeSlide(1); },
+                'berikutnya': function() { changeSlide(1); },
+                'previous': function() { changeSlide(-1); },
+                'previous slide': function() { changeSlide(-1); },
+                'kembali': function() { changeSlide(-1); },
+                'sebelumnya': function() { changeSlide(-1); },
+                'mundur': function() { changeSlide(-1); }
+            };
+            annyang.addCommands(commands);
+            annyang.setLanguage('id-ID'); // Mendukung bahasa Indonesia
+            annyang.start({ autoRestart: true, continuous: false });
+        }
     </script>
 
 </body>
