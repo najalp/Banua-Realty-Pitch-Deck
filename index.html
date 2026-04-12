@@ -274,7 +274,9 @@
             <span class="iconify" id="voiceIcon" data-icon="lucide:mic-off" data-width="14"></span>
             <span id="voiceText">Suara: Mati</span>
         </button>
-        <span id="slideCounter" onclick="toggleJumpModal()" title="Pilih slide cepat" class="text-white/60 text-sm font-medium tracking-wider font-inter cursor-pointer hover:text-white hover:bg-white/10 px-2 py-1 rounded-md transition-all">01 / 10</span>
+        <span id="slideCounter" onclick="toggleJumpModal()" title="Pilih slide cepat"
+            class="text-white/60 text-sm font-medium tracking-wider font-inter cursor-pointer hover:text-white hover:bg-white/10 px-2 py-1 rounded-md transition-all">01
+            / 10</span>
     </div>
 
     <!-- Navigation Arrows -->
@@ -303,8 +305,10 @@
     </div>
 
     <!-- Hidden Jump UI Modal -->
-    <div id="jumpModal" class="fixed inset-0 z-[100] bg-slate-900/80 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
-        <div class="bg-white rounded-2xl p-6 max-w-sm w-full mx-4 shadow-2xl transform scale-95 transition-transform duration-300" id="jumpModalContent">
+    <div id="jumpModal"
+        class="fixed inset-0 z-[100] bg-slate-900/80 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-white rounded-2xl p-6 max-w-sm w-full mx-4 shadow-2xl transform scale-95 transition-transform duration-300"
+            id="jumpModalContent">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-slate-900 font-bold text-lg">Lompat ke Slide</h3>
                 <button onclick="toggleJumpModal()" class="text-slate-400 hover:text-slate-600 focus:outline-none">
@@ -312,18 +316,29 @@
                 </button>
             </div>
             <div class="grid grid-cols-5 gap-2">
-                <button onclick="jumpTo(0)" class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">1</button>
-                <button onclick="jumpTo(1)" class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">2</button>
-                <button onclick="jumpTo(2)" class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">3</button>
-                <button onclick="jumpTo(3)" class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">4</button>
-                <button onclick="jumpTo(4)" class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">5</button>
-                <button onclick="jumpTo(5)" class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">6</button>
-                <button onclick="jumpTo(6)" class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">7</button>
-                <button onclick="jumpTo(7)" class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">8</button>
-                <button onclick="jumpTo(8)" class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">9</button>
-                <button onclick="jumpTo(9)" class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">10</button>
+                <button onclick="jumpTo(0)"
+                    class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">1</button>
+                <button onclick="jumpTo(1)"
+                    class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">2</button>
+                <button onclick="jumpTo(2)"
+                    class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">3</button>
+                <button onclick="jumpTo(3)"
+                    class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">4</button>
+                <button onclick="jumpTo(4)"
+                    class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">5</button>
+                <button onclick="jumpTo(5)"
+                    class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">6</button>
+                <button onclick="jumpTo(6)"
+                    class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">7</button>
+                <button onclick="jumpTo(7)"
+                    class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">8</button>
+                <button onclick="jumpTo(8)"
+                    class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">9</button>
+                <button onclick="jumpTo(9)"
+                    class="aspect-square rounded-xl bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-600 font-semibold transition-colors flex items-center justify-center">10</button>
             </div>
-            <p class="text-xs text-slate-400 mt-4 text-center">Tips: Saat suara aktif, bicara <b class="text-slate-600">"Slide Tiga"</b> untuk lompat cepat.</p>
+            <p class="text-xs text-slate-400 mt-4 text-center">Tips: Saat suara aktif, bicara <b
+                    class="text-slate-600">"Slide Tiga"</b> untuk lompat cepat.</p>
         </div>
     </div>
 
@@ -331,7 +346,8 @@
     <div class="slide active" data-slide="0">
         <div class="slide-inner">
             <div class="slide-header-bar"></div>
-            <div class="relative flex flex-col items-center justify-center px-8 md:px-16 py-16 md:py-20 overflow-hidden flex-1">
+            <div
+                class="relative flex flex-col items-center justify-center px-8 md:px-16 py-16 md:py-20 overflow-hidden flex-1">
                 <div class="absolute top-8 right-8 w-48 h-48 rounded-full bg-emerald-50 opacity-60"></div>
                 <div class="absolute bottom-8 left-8 w-32 h-32 rounded-full bg-amber-50 opacity-50"></div>
                 <div
@@ -525,8 +541,7 @@
                                 banuarealty.my.id</div>
                         </div>
                         <div class="relative" style="aspect-ratio: 16/10;">
-                            <img src="Preview web.png" alt="Web Preview"
-                                class="w-full h-full object-cover">
+                            <img src="Preview web.png" alt="Web Preview" class="w-full h-full object-cover">
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-slate-900/20">
                             </div>
@@ -538,11 +553,11 @@
                         </div>
                     </div>
                     <div class="anim-4 flex flex-col items-center gap-4">
-                        <div class="qr-box p-4">
-                            <img src="qr.svg" alt="QR Code" class="w-full h-full">
+                        <div class="qr-box">
+                            <img src="qr.svg" alt="QR Code" class="w-[100px] h-[100px]">
                         </div>
                         <p class="text-slate-900 font-semibold text-sm">Scan untuk Kunjungi</p>
-                        <p class="text-slate-400 text-xs">banuarealty.com</p>
+                        <p class="text-slate-400 text-xs">banuarealty.my.id</p>
                     </div>
                 </div>
             </div>
@@ -724,78 +739,126 @@
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mt-4">
                     <!-- PM -->
                     <div class="anim-3 relative h-[250px] md:h-[290px] group flex flex-col justify-end">
-                        <div class="absolute inset-x-0 bottom-0 h-[210px] md:h-[250px] bg-emerald-600 rounded-tl-[3.5rem] rounded-tr-xl rounded-b-xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:bg-emerald-500">
-                            <div class="absolute left-[8px] bottom-6 origin-bottom-left -rotate-90 text-white/10 font-bold text-3xl md:text-4xl uppercase tracking-widest whitespace-nowrap">MANAGER</div>
-                            <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-emerald-950 via-emerald-800/80 to-transparent z-10 pointer-events-none"></div>
+                        <div
+                            class="absolute inset-x-0 bottom-0 h-[210px] md:h-[250px] bg-emerald-600 rounded-tl-[3.5rem] rounded-tr-xl rounded-b-xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:bg-emerald-500">
+                            <div
+                                class="absolute left-[8px] bottom-6 origin-bottom-left -rotate-90 text-white/10 font-bold text-3xl md:text-4xl uppercase tracking-widest whitespace-nowrap">
+                                MANAGER</div>
+                            <div
+                                class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-emerald-950 via-emerald-800/80 to-transparent z-10 pointer-events-none">
+                            </div>
                         </div>
-                        <img src="tim/PM.jpg" alt="PM" class="relative z-0 w-[95%] mx-auto h-[250px] md:h-[290px] object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 pointer-events-none" style="border-radius: 3.5rem 0.75rem 0 0;">
+                        <img src="tim/PM.jpg" alt="PM"
+                            class="relative z-0 w-[95%] mx-auto h-[250px] md:h-[290px] object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 pointer-events-none"
+                            style="border-radius: 3.5rem 0.75rem 0 0;">
                         <div class="absolute z-20 left-0 bottom-0 p-4 md:p-5 w-full pointer-events-none">
-                            <h3 class="text-white font-bold tracking-wide text-xs md:text-sm mb-0.5 drop-shadow-md">M. Alpiannor Najimi</h3>
+                            <h3 class="text-white font-bold tracking-wide text-xs md:text-sm mb-0.5 drop-shadow-md">M.
+                                Alpiannor Najimi</h3>
                             <p class="text-emerald-200 text-[10px] uppercase tracking-widest font-medium">PM</p>
                         </div>
                     </div>
 
                     <!-- Finance -->
                     <div class="anim-4 relative h-[250px] md:h-[290px] group flex flex-col justify-end">
-                        <div class="absolute inset-x-0 bottom-0 h-[210px] md:h-[250px] bg-amber-500 rounded-tl-[3.5rem] rounded-tr-xl rounded-b-xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:bg-amber-400">
-                            <div class="absolute left-[8px] bottom-6 origin-bottom-left -rotate-90 text-white/20 font-bold text-3xl md:text-4xl uppercase tracking-widest whitespace-nowrap">FINANCE</div>
-                            <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-amber-950 via-amber-700/80 to-transparent z-10 pointer-events-none"></div>
+                        <div
+                            class="absolute inset-x-0 bottom-0 h-[210px] md:h-[250px] bg-amber-500 rounded-tl-[3.5rem] rounded-tr-xl rounded-b-xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:bg-amber-400">
+                            <div
+                                class="absolute left-[8px] bottom-6 origin-bottom-left -rotate-90 text-white/20 font-bold text-3xl md:text-4xl uppercase tracking-widest whitespace-nowrap">
+                                FINANCE</div>
+                            <div
+                                class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-amber-950 via-amber-700/80 to-transparent z-10 pointer-events-none">
+                            </div>
                         </div>
-                        <img src="tim/FINANCE.jpg" alt="Finance" class="relative z-0 w-[95%] mx-auto h-[250px] md:h-[290px] object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 pointer-events-none" style="border-radius: 3.5rem 0.75rem 0 0;">
+                        <img src="tim/FINANCE.jpg" alt="Finance"
+                            class="relative z-0 w-[95%] mx-auto h-[250px] md:h-[290px] object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 pointer-events-none"
+                            style="border-radius: 3.5rem 0.75rem 0 0;">
                         <div class="absolute z-20 left-0 bottom-0 p-4 md:p-5 w-full pointer-events-none">
-                            <h3 class="text-white font-bold tracking-wide text-xs md:text-sm mb-0.5 drop-shadow-md">Azzahra Putri Arrahim</h3>
+                            <h3 class="text-white font-bold tracking-wide text-xs md:text-sm mb-0.5 drop-shadow-md">
+                                Azzahra Putri Arrahim</h3>
                             <p class="text-amber-100 text-[10px] uppercase tracking-widest font-medium">Finance</p>
                         </div>
                     </div>
 
                     <!-- Admin -->
                     <div class="anim-5 relative h-[250px] md:h-[290px] group flex flex-col justify-end">
-                        <div class="absolute inset-x-0 bottom-0 h-[210px] md:h-[250px] bg-emerald-600 rounded-tl-[3.5rem] rounded-tr-xl rounded-b-xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:bg-emerald-500">
-                            <div class="absolute left-[8px] bottom-6 origin-bottom-left -rotate-90 text-white/10 font-bold text-3xl md:text-4xl uppercase tracking-widest whitespace-nowrap">ADMIN</div>
-                            <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-emerald-950 via-emerald-800/80 to-transparent z-10 pointer-events-none"></div>
+                        <div
+                            class="absolute inset-x-0 bottom-0 h-[210px] md:h-[250px] bg-emerald-600 rounded-tl-[3.5rem] rounded-tr-xl rounded-b-xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:bg-emerald-500">
+                            <div
+                                class="absolute left-[8px] bottom-6 origin-bottom-left -rotate-90 text-white/10 font-bold text-3xl md:text-4xl uppercase tracking-widest whitespace-nowrap">
+                                ADMIN</div>
+                            <div
+                                class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-emerald-950 via-emerald-800/80 to-transparent z-10 pointer-events-none">
+                            </div>
                         </div>
-                        <img src="tim/ADMIN.jpg" alt="Admin" class="relative z-0 w-[95%] mx-auto h-[250px] md:h-[290px] object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 pointer-events-none" style="border-radius: 3.5rem 0.75rem 0 0;">
+                        <img src="tim/ADMIN.jpg" alt="Admin"
+                            class="relative z-0 w-[95%] mx-auto h-[250px] md:h-[290px] object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 pointer-events-none"
+                            style="border-radius: 3.5rem 0.75rem 0 0;">
                         <div class="absolute z-20 left-0 bottom-0 p-4 md:p-5 w-full pointer-events-none">
-                            <h3 class="text-white font-bold tracking-wide text-xs md:text-sm mb-0.5 drop-shadow-md">Muhammad Fariz Casno</h3>
+                            <h3 class="text-white font-bold tracking-wide text-xs md:text-sm mb-0.5 drop-shadow-md">
+                                Muhammad Fariz Casno</h3>
                             <p class="text-emerald-200 text-[10px] uppercase tracking-widest font-medium">Admin</p>
                         </div>
                     </div>
 
                     <!-- Marketing -->
                     <div class="anim-5 relative h-[250px] md:h-[290px] group flex flex-col justify-end">
-                        <div class="absolute inset-x-0 bottom-0 h-[210px] md:h-[250px] bg-amber-500 rounded-tl-[3.5rem] rounded-tr-xl rounded-b-xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:bg-amber-400">
-                            <div class="absolute left-[8px] bottom-6 origin-bottom-left -rotate-90 text-white/20 font-bold text-3xl md:text-4xl uppercase tracking-widest whitespace-nowrap">MARKETING</div>
-                            <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-amber-950 via-amber-700/80 to-transparent z-10 pointer-events-none"></div>
+                        <div
+                            class="absolute inset-x-0 bottom-0 h-[210px] md:h-[250px] bg-amber-500 rounded-tl-[3.5rem] rounded-tr-xl rounded-b-xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:bg-amber-400">
+                            <div
+                                class="absolute left-[8px] bottom-6 origin-bottom-left -rotate-90 text-white/20 font-bold text-3xl md:text-4xl uppercase tracking-widest whitespace-nowrap">
+                                MARKETING</div>
+                            <div
+                                class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-amber-950 via-amber-700/80 to-transparent z-10 pointer-events-none">
+                            </div>
                         </div>
-                        <img src="tim/MARKETING.jpg" alt="Marketing" class="relative z-0 w-[95%] mx-auto h-[250px] md:h-[290px] object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 pointer-events-none" style="border-radius: 3.5rem 0.75rem 0 0;">
+                        <img src="tim/MARKETING.jpg" alt="Marketing"
+                            class="relative z-0 w-[95%] mx-auto h-[250px] md:h-[290px] object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 pointer-events-none"
+                            style="border-radius: 3.5rem 0.75rem 0 0;">
                         <div class="absolute z-20 left-0 bottom-0 p-4 md:p-5 w-full pointer-events-none">
-                            <h3 class="text-white font-bold tracking-wide text-xs md:text-sm mb-0.5 drop-shadow-md">Ghina Putri Aulia</h3>
+                            <h3 class="text-white font-bold tracking-wide text-xs md:text-sm mb-0.5 drop-shadow-md">
+                                Ghina Putri Aulia</h3>
                             <p class="text-amber-100 text-[10px] uppercase tracking-widest font-medium">Marketing</p>
                         </div>
                     </div>
 
                     <!-- Sales -->
                     <div class="anim-6 relative h-[250px] md:h-[290px] group flex flex-col justify-end">
-                        <div class="absolute inset-x-0 bottom-0 h-[210px] md:h-[250px] bg-emerald-600 rounded-tl-[3.5rem] rounded-tr-xl rounded-b-xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:bg-emerald-500">
-                            <div class="absolute left-[8px] bottom-6 origin-bottom-left -rotate-90 text-white/10 font-bold text-3xl md:text-4xl uppercase tracking-widest whitespace-nowrap">SALES</div>
-                            <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-emerald-950 via-emerald-800/80 to-transparent z-10 pointer-events-none"></div>
+                        <div
+                            class="absolute inset-x-0 bottom-0 h-[210px] md:h-[250px] bg-emerald-600 rounded-tl-[3.5rem] rounded-tr-xl rounded-b-xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:bg-emerald-500">
+                            <div
+                                class="absolute left-[8px] bottom-6 origin-bottom-left -rotate-90 text-white/10 font-bold text-3xl md:text-4xl uppercase tracking-widest whitespace-nowrap">
+                                SALES</div>
+                            <div
+                                class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-emerald-950 via-emerald-800/80 to-transparent z-10 pointer-events-none">
+                            </div>
                         </div>
-                        <img src="tim/SALES.jpg" alt="Sales" class="relative z-0 w-[95%] mx-auto h-[250px] md:h-[290px] object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 pointer-events-none" style="border-radius: 3.5rem 0.75rem 0 0;">
+                        <img src="tim/SALES.jpg" alt="Sales"
+                            class="relative z-0 w-[95%] mx-auto h-[250px] md:h-[290px] object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 pointer-events-none"
+                            style="border-radius: 3.5rem 0.75rem 0 0;">
                         <div class="absolute z-20 left-0 bottom-0 p-4 md:p-5 w-full pointer-events-none">
-                            <h3 class="text-white font-bold tracking-wide text-xs md:text-sm mb-0.5 drop-shadow-md">Muhammad Rafi Al Fariz</h3>
+                            <h3 class="text-white font-bold tracking-wide text-xs md:text-sm mb-0.5 drop-shadow-md">
+                                Muhammad Rafi Al Fariz</h3>
                             <p class="text-emerald-200 text-[10px] uppercase tracking-widest font-medium">Sales</p>
                         </div>
                     </div>
 
                     <!-- Produksi -->
                     <div class="anim-7 relative h-[250px] md:h-[290px] group flex flex-col justify-end">
-                        <div class="absolute inset-x-0 bottom-0 h-[210px] md:h-[250px] bg-amber-500 rounded-tl-[3.5rem] rounded-tr-xl rounded-b-xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:bg-amber-400">
-                            <div class="absolute left-[8px] bottom-6 origin-bottom-left -rotate-90 text-white/20 font-bold text-3xl md:text-4xl uppercase tracking-widest whitespace-nowrap">PRODUKSI</div>
-                            <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-amber-950 via-amber-700/80 to-transparent z-10 pointer-events-none"></div>
+                        <div
+                            class="absolute inset-x-0 bottom-0 h-[210px] md:h-[250px] bg-amber-500 rounded-tl-[3.5rem] rounded-tr-xl rounded-b-xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:bg-amber-400">
+                            <div
+                                class="absolute left-[8px] bottom-6 origin-bottom-left -rotate-90 text-white/20 font-bold text-3xl md:text-4xl uppercase tracking-widest whitespace-nowrap">
+                                PRODUKSI</div>
+                            <div
+                                class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-amber-950 via-amber-700/80 to-transparent z-10 pointer-events-none">
+                            </div>
                         </div>
-                        <img src="tim/PRODUKSI.jpg" alt="Produksi" class="relative z-0 w-[95%] mx-auto h-[250px] md:h-[290px] object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 pointer-events-none" style="border-radius: 3.5rem 0.75rem 0 0;">
+                        <img src="tim/PRODUKSI.jpg" alt="Produksi"
+                            class="relative z-0 w-[95%] mx-auto h-[250px] md:h-[290px] object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 pointer-events-none"
+                            style="border-radius: 3.5rem 0.75rem 0 0;">
                         <div class="absolute z-20 left-0 bottom-0 p-4 md:p-5 w-full pointer-events-none">
-                            <h3 class="text-white font-bold tracking-wide text-xs md:text-sm mb-0.5 drop-shadow-md">M. Parhan Nawarii</h3>
+                            <h3 class="text-white font-bold tracking-wide text-xs md:text-sm mb-0.5 drop-shadow-md">M.
+                                Parhan Nawarii</h3>
                             <p class="text-amber-100 text-[10px] uppercase tracking-widest font-medium">Produksi</p>
                         </div>
                     </div>
@@ -1039,25 +1102,25 @@
             document.getElementById('voiceToggleBtn').classList.remove('hidden');
 
             var commands = {
-                'next': function() { changeSlide(1); },
-                'next slide': function() { changeSlide(1); },
-                'lanjut': function() { changeSlide(1); },
-                'selanjutnya': function() { changeSlide(1); },
-                'berikutnya': function() { changeSlide(1); },
-                'previous': function() { changeSlide(-1); },
-                'previous slide': function() { changeSlide(-1); },
-                'kembali': function() { changeSlide(-1); },
-                'sebelumnya': function() { changeSlide(-1); },
-                'mundur': function() { changeSlide(-1); }
+                'next': function () { changeSlide(1); },
+                'next slide': function () { changeSlide(1); },
+                'lanjut': function () { changeSlide(1); },
+                'selanjutnya': function () { changeSlide(1); },
+                'berikutnya': function () { changeSlide(1); },
+                'previous': function () { changeSlide(-1); },
+                'previous slide': function () { changeSlide(-1); },
+                'kembali': function () { changeSlide(-1); },
+                'sebelumnya': function () { changeSlide(-1); },
+                'mundur': function () { changeSlide(-1); }
             };
 
-            var jumpVoice = function(num) {
+            var jumpVoice = function (num) {
                 if (!num) return;
-                var words = { 'satu':1, 'dua':2, 'tiga':3, 'empat':4, 'lima':5, 'enam':6, 'tujuh':7, 'delapan':8, 'sembilan':9, 'sepuluh':10 };
+                var words = { 'satu': 1, 'dua': 2, 'tiga': 3, 'empat': 4, 'lima': 5, 'enam': 6, 'tujuh': 7, 'delapan': 8, 'sembilan': 9, 'sepuluh': 10 };
                 var strNum = num.toLowerCase().trim();
                 var p = parseInt(strNum);
-                if(isNaN(p)) p = words[strNum];
-                if(p >= 1 && p <= totalSlides) { goToSlide(p-1); }
+                if (isNaN(p)) p = words[strNum];
+                if (p >= 1 && p <= totalSlides) { goToSlide(p - 1); }
             };
 
             commands['slide *num'] = jumpVoice;
