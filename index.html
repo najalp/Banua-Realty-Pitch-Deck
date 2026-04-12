@@ -52,6 +52,29 @@
             }
         }
 
+        /* Mode Proyektor */
+        html.projector-mode {
+            font-size: 14px !important;
+        }
+
+        @media (min-width: 1024px) {
+            html.projector-mode {
+                font-size: 15px !important;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            html.projector-mode {
+                font-size: 16px !important;
+            }
+        }
+
+        @media (min-width: 1536px) {
+            html.projector-mode {
+                font-size: 18px !important;
+            }
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             overflow: hidden;
@@ -289,8 +312,14 @@
             style="width: 10%"></div>
     </div>
 
-    <!-- Slide Counter & Voice Button -->
+    <!-- Navigation Tools (Mode, Voice, Counter) -->
     <div class="fixed top-5 right-6 z-50 flex items-center gap-3">
+        <button id="projectorToggleBtn" onclick="toggleProjectorMode()"
+            class="flex items-center gap-2 bg-slate-800/60 hover:bg-emerald-600 text-white px-3 py-1.5 rounded-full text-xs font-medium transition-all backdrop-blur-md border border-white/10"
+            title="Mode Layar">
+            <span class="iconify" id="projectorIcon" data-icon="lucide:monitor" data-width="14"></span>
+            <span id="projectorText" class="hidden md:inline">Mode Biasa</span>
+        </button>
         <button id="voiceToggleBtn" onclick="toggleVoice()"
             class="flex items-center gap-2 bg-slate-800/60 hover:bg-emerald-600 text-white px-3 py-1.5 rounded-full text-xs font-medium transition-all backdrop-blur-md border border-white/10 hidden">
             <span class="iconify" id="voiceIcon" data-icon="lucide:mic-off" data-width="14"></span>
@@ -1086,6 +1115,20 @@
         function jumpTo(index) {
             goToSlide(index);
             toggleJumpModal();
+        }
+
+        let isProjectorMode = false;
+        function toggleProjectorMode() {
+            isProjectorMode = !isProjectorMode;
+            if (isProjectorMode) {
+                document.documentElement.classList.add('projector-mode');
+                document.getElementById('projectorIcon').setAttribute('data-icon', 'lucide:projector');
+                document.getElementById('projectorText').textContent = 'Proyektor';
+            } else {
+                document.documentElement.classList.remove('projector-mode');
+                document.getElementById('projectorIcon').setAttribute('data-icon', 'lucide:monitor');
+                document.getElementById('projectorText').textContent = 'Mode Biasa';
+            }
         }
 
         function toggleVoice() {
